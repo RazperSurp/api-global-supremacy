@@ -29,8 +29,29 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
+# developer's vscode settings
+/.vscode
+
+# uploaded files
+/web/files/*
+
 tests/_output/*
 tests/_support/_generated
 
 #vagrant folder
 /.vagrant
+
+# Файл с конфигурацией подключения к дампу БД, которая используется при разработке
+# <?php
+#
+# return [
+#     'class' => 'yii\db\Connection',
+#     'dsn' => 'pgsql:host=127.0.0.1;dbname=mirea_dev;port=5434',
+#     'username' => 'postgres',
+#     'password' => '',
+#     'charset' => 'utf8',
+# ];
+/config/db-dev.php
+
+# локальный набор параметров для организации
+/config/localparams.php

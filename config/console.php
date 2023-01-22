@@ -1,7 +1,10 @@
 <?php
 
 $params = require __DIR__ . '/params.php';
-$db = require __DIR__ . '/db.php';
+
+if (file_exists(__DIR__ . '/db-dev.php')) 
+    $db = require __DIR__ . '/db-dev.php';
+else $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic-console',
@@ -42,6 +45,20 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
+        'generators' => [
+            'model' => [
+                'class' => 'yii\gii\generators\model\Generator',
+                'templates' => [
+                    'actual' => '@app/config/templates'
+                ]
+            ],
+            'controller' => [
+                'class' => 'yii\gii\generators\controller\Generator',
+                'templates' => [
+                    'actual' => '@app/config/templates'
+                ]
+            ]
+        ],
     ];
     // configuration adjustments for 'dev' environment
     // requires version `2.1.21` of yii2-debug module
